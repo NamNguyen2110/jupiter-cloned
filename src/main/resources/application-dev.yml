@@ -18,9 +18,9 @@ spring:
   application:
     name: opps-service
   datasource:
-    url: jdbc:mysql://localhost:3306/jupiter
-    username: root
-    password: root
+    url: jdbc:mysql://mysql-bdb-jup-database.c0zrisx5dzle.ap-southeast-1.rds.amazonaws.com:3306/jupiter?createDatabaseIfNotExist=true
+    username: bdbjupAdmin
+    password: ${password}
   jpa:
     properties:
       hibernate:
