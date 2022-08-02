@@ -8,12 +8,12 @@ eureka:
     prefer-ip-address: true
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${server.port}}}
   client:
-    fetchRegistry: true
-    register-with-eureka: true
+    fetchRegistry: false
+    register-with-eureka: false
     service-url:
       defaultZone: http://eureka.bdb-jup.com/eureka
 
-# Config local database connection
+# Config database connection
 spring:
   application:
     name: opps-service

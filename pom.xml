@@ -17,8 +17,14 @@
         <java.version>11</java.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
         <swagger.version>1.5.22</swagger.version>
+        <common.version>0.0.1-SNAPSHOT</common.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.jupiter</groupId>
+            <artifactId>common</artifactId>
+            <version>${common.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.swagger/swagger-annotations -->
         <dependency>
             <groupId>io.swagger</groupId>
