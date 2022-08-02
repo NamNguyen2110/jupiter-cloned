@@ -11,16 +11,16 @@ eureka:
     fetchRegistry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://eureka.bdb-jup.com/eureka
+      defaultZone: http://localhost:8761/eureka
 
 # Config local database connection
 spring:
   application:
     name: opps-service
   datasource:
-    url: jdbc:mysql://mysql-bdb-jup-database.c0zrisx5dzle.ap-southeast-1.rds.amazonaws.com:3306/jupiter?createDatabaseIfNotExist=true
-    username: bdbjupAdmin
-    password: ${password}
+    url: jdbc:mysql://localhost:3306/jupiter?createDatabaseIfNotExist=true
+    username: root
+    password: root
   jpa:
     properties:
       hibernate:
