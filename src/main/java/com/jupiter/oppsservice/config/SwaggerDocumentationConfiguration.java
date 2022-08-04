@@ -15,9 +15,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerDocumentationConfiguration {
 
     ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Opps REST operations API in Spring-Boot")
+        return new ApiInfoBuilder().title("Opps Service API ")
                 .description(
-                        "Sample REST API for centalized documentation using Spring Boot and spring-fox swagger 2 ")
+                        "Here is the Swagger for Opps Service  ")
                 .termsOfServiceUrl("").version("0.0.1-SNAPSHOT").
                 contact(new Contact("Javis Hoang", "https://hrms.cmcglobal.com.vn/timesheet",
                         "htnho@cmcglobal.vn")).build();
