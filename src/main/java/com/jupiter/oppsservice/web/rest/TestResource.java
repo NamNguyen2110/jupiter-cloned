@@ -1,4 +1,4 @@
-package com.jupiter.oppsservice.controller;
+package com.jupiter.oppsservice.web.rest;
 
 import com.jupiter.oppsservice.entity.User;
 import com.jupiter.oppsservice.repository.UserRepository;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-public class TestController {
+public class TestResource {
 
     @Autowired
     private UserRepository repository;

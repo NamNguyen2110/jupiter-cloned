@@ -17,6 +17,7 @@
         <java.version>11</java.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
         <swagger.version>1.5.22</swagger.version>
+        <springfox.swagger.version>2.9.2</springfox.swagger.version>
         <common.version>0.0.1-SNAPSHOT</common.version>
     </properties>
     <dependencies>
@@ -80,9 +81,14 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.4</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.swagger.version}</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
