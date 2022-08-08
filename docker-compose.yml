@@ -1,0 +1,8 @@
+services:
+  opp-service:
+    image: phnam3/opp-service:v1.0.0
+    container_name: opp-service
+    restart: always
+    build: .
+    ports:
+      - 8081:8081
