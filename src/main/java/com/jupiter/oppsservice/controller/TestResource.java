@@ -1,4 +1,4 @@
-package com.jupiter.oppsservice.web.rest;
+package com.jupiter.oppsservice.controller;
 
 import com.jupiter.common.annotation.AuthorizedFor;
 import com.jupiter.common.constants.Role;

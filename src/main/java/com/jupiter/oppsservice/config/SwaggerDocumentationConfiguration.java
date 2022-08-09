@@ -26,7 +26,7 @@ public class SwaggerDocumentationConfiguration {
     @Bean
     public Docket configureControllerPackageAndConvertors() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("com.jupiter.oppsservice.web.rest")).build()
+                .apis(RequestHandlerSelectors.basePackage("com.jupiter.oppsservice.controller")).build()
                 .apiInfo(apiInfo());
     }
 
