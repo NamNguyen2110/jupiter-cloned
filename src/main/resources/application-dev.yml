@@ -8,8 +8,8 @@ eureka:
     prefer-ip-address: true
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${server.port}}}
   client:
-    fetchRegistry: false
-    register-with-eureka: false
+    fetchRegistry: true
+    register-with-eureka: true
     service-url:
       defaultZone: http://eureka.bdb-jup.com/eureka
 

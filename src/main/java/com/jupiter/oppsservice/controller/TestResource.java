@@ -1,4 +1,7 @@
-package com.jupiter.oppsservice.web.rest;
+package com.jupiter.oppsservice.controller;
+
+import com.jupiter.common.annotation.AuthorizedFor;
+import com.jupiter.common.constants.Role;
 
 import com.jupiter.oppsservice.entity.User;
 import com.jupiter.oppsservice.repository.UserRepository;
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/opps")
 public class TestResource {
 
     @Autowired
@@ -23,6 +26,7 @@ public class TestResource {
         return ResponseEntity.ok(repository.findAll());
     }
 
+    @AuthorizedFor(roles = Role.ADMIN)
     @GetMapping("/{id}")
     public ResponseEntity<User> getOne(@PathVariable("id") Long id) {
         return ResponseEntity.ok(repository.findById(id).orElseThrow());
