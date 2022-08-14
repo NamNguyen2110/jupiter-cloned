@@ -1,6 +1,6 @@
 services:
   opp-service:
-    image: phnam3/opp-service:v1.0.0
+    image: 528573161741.dkr.ecr.ap-southeast-1.amazonaws.com/opp-service:v1.0.0
     container_name: opp-service
     restart: always
     build: .
