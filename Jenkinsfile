@@ -1,14 +1,14 @@
 pipeline {
     agent any
     environment {
+        DOCKER_IMAGE_NAME   = '528573161741.dkr.ecr.ap-southeast-1.amazonaws.com/opp-service'
         OLD_IMAGE_TAG       = 'v1.0.0'
         IMAGE_TAG           = 'v1.0.0'
         CONTAINER_NAME      = 'opp-service'
-        DOCKER_IMAGE_NAME   = '528573161741.dkr.ecr.ap-southeast-1.amazonaws.com/${CONTAINER_NAME}'
 
         AWS_ACCOUNT_ID      = "528573161741"
         AWS_DEFAULT_REGION  = "ap-southeast-1"
-        IMAGE_REPO_NAME     = "${CONTAINER_NAME}"
+        IMAGE_REPO_NAME     = "opp-service"
         REPOSITORY_URI      = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
     tools {
