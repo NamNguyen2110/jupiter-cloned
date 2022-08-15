@@ -68,10 +68,6 @@ pipeline {
                     // Connect to main aws ec2 instance
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com'
 
-                    // Clean old image and container
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker rm -f ${CONTAINER_NAME}'
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker rmi -f ${DOCKER_IMAGE_NAME}:${IMAGE_TAG}'
-
                     // Pull latest image
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker pull ${DOCKER_IMAGE_NAME}:${IMAGE_TAG}'
 
@@ -82,7 +78,12 @@ pipeline {
 
                     // Remove newly created container and run the service with docker compose
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker rm -v $(ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker ps -ql)'
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@${AWS_PRIVATE_IP} docker stop ${CONTAINER_NAME}'
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker-compose --file /etc/docker/${CONTAINER_NAME}/docker-compose.yml up -d ${CONTAINER_NAME}'
+
+                    // Clean old image and container
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@${AWS_PRIVATE_IP} docker container prune -f'
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@${AWS_PRIVATE_IP} docker image prune -f'
                 }
             }
         }
