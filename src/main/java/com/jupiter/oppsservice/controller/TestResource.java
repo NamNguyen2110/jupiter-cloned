@@ -3,6 +3,8 @@ package com.jupiter.oppsservice.controller;
 import com.jupiter.common.annotation.AuthorizedFor;
 import com.jupiter.common.constants.Role;
 
+import com.jupiter.common.exception.BusinessException;
+import com.jupiter.common.service.MessageService;
 import com.jupiter.oppsservice.entity.User;
 import com.jupiter.oppsservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class TestResource {
 
     @Autowired
     private UserRepository repository;
+    @Autowired
+    private MessageService messageService;
 
     @GetMapping
     public ResponseEntity<List<User>> getAll() {
