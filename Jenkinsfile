@@ -78,7 +78,7 @@ pipeline {
 
                     // Remove newly created container and run the service with docker compose
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker rm -v $(ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker ps -ql)'
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@${AWS_PRIVATE_IP} docker stop ${CONTAINER_NAME}'
+//                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@${AWS_PRIVATE_IP} docker stop ${CONTAINER_NAME}'
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.19.133 docker-compose --file /etc/docker/${CONTAINER_NAME}/docker-compose.yml up -d ${CONTAINER_NAME}'
 
                     // Clean old image and container
