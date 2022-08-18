@@ -1,0 +1,18 @@
+services:
+  opp-service:
+    image: 528573161741.dkr.ecr.ap-southeast-1.amazonaws.com/opp-service:v1.0.0
+    container_name: opp-service
+    restart: always
+    environment:
+      password: bdbJupiter123
+      profile: dev
+      eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka
+    networks:
+      - jup_docker_network
+    build: .
+    ports:
+      - 8081:8081
+
+networks:
+  jup_docker_network:
+    external: true
