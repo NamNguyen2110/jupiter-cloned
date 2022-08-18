@@ -3,8 +3,12 @@ package com.jupiter.oppsservice.controller;
 import com.jupiter.common.annotation.AuthorizedFor;
 import com.jupiter.common.constants.Role;
 
+import com.jupiter.common.exception.BusinessException;
+import com.jupiter.common.security.SecurityContext;
+import com.jupiter.common.service.MessageService;
 import com.jupiter.oppsservice.entity.User;
 import com.jupiter.oppsservice.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +20,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/opps")
+@RequiredArgsConstructor
 public class TestResource {
 
     @Autowired
     private UserRepository repository;
+    @Autowired
+    private MessageService messageService;
+
+    private final SecurityContext securityContext;
 
     @GetMapping
     public ResponseEntity<List<User>> getAll() {
