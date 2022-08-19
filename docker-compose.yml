@@ -9,7 +9,7 @@ services:
       DB_URL: jdbc:mysql://mysql-bdb-jup-database.c0zrisx5dzle.ap-southeast-1.rds.amazonaws.com:3306/jupiter
       DB_USERNAME: bdbjupAdmin
       DB_PASSWORD: bdbJupiter123
-      SWAGGER.BASEURL: "http://api-hub.bdb-jup.com/jupiter"
+      SWAGGER.BASEURL: "api-hub.bdb-jup.com/jupiter"
       SERVER.PORT: 8081
     networks:
       - jup_docker_network
