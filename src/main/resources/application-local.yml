@@ -45,3 +45,6 @@ logging:
 springdoc:
   api-docs:
     path: /api-docs
+---
+swagger:
+  baseUrl: localhost:8765/jupiter

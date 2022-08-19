@@ -1,6 +1,6 @@
 # Config port
 server:
-  port: 8081
+  port: ${SERVER.PORT}
 
 # Config service client
 eureka:
@@ -11,16 +11,16 @@ eureka:
     fetchRegistry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: ${EUREKA.DEFAULTZONE}
 
 # Config database connection
 spring:
   application:
     name: opps-service
   datasource:
-    url: jdbc:mysql://mysql-bdb-jup-database.c0zrisx5dzle.ap-southeast-1.rds.amazonaws.com:3306/jupiter?createDatabaseIfNotExist=true
-    username: bdbjupAdmin
-    password: ${password}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     properties:
       hibernate:
@@ -45,3 +45,6 @@ logging:
 springdoc:
   api-docs:
     path: /api-docs
+---
+swagger:
+  baseUrl: ${SWAGGER.BASEURL}
