@@ -5,12 +5,12 @@ services:
     restart: always
     environment:
       profile: dev
-        eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka
-        DB_URL: jdbc:mysql://mysql-bdb-jup-database.c0zrisx5dzle.ap-southeast-1.rds.amazonaws.com:3306/jupiter
-        DB_USERNAME: bdbjupAdmin
-        DB_PASSWORD: bdbJupiter123
-        SWAGGER.BASEURL: "http://api-hub.bdb-jup.com/jupiter"
-        SERVER.PORT: 8081
+      eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka
+      DB_URL: jdbc:mysql://mysql-bdb-jup-database.c0zrisx5dzle.ap-southeast-1.rds.amazonaws.com:3306/jupiter
+      DB_USERNAME: bdbjupAdmin
+      DB_PASSWORD: bdbJupiter123
+      SWAGGER.BASEURL: "http://api-hub.bdb-jup.com/jupiter"
+      SERVER.PORT: 8081
     networks:
       - jup_docker_network
     build: .
