@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Local db ###
-/src/main/resources/application-local.yml
+src/main/**/application-local.yml

@@ -34,7 +34,7 @@ public class SwaggerDocumentationConfiguration {
     @Bean
     public Docket configureControllerPackageAndConvertors() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .host(env.getProperty("swagger.baseUrl"))
+//                .host(env.getProperty("swagger.baseUrl"))
                 .securityContexts(Arrays.asList(securityContext()))
                 .securitySchemes(Arrays.asList(apiKey()))
                 .select()
