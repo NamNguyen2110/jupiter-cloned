@@ -38,7 +38,7 @@ public class OppServiceImpl implements OppService {
 
     @Override
     public Page<OppResponse> search(Pageable pageable) {
-        return null;
+        return oppRepo.findAll(pageable).map(oppMapper::toDto);
     }
 
     @Override

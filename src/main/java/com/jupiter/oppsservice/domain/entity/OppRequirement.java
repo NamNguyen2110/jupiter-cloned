@@ -1,5 +1,6 @@
 package com.jupiter.oppsservice.domain.entity;
 
+import com.jupiter.common.base.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -12,7 +13,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "opp_requirement")
-public class OppRequirement {
+public class OppRequirement extends AbstractEntity {
     @Id
     @Column(name = "id", unique = true, nullable = false, length = 36)
     @GeneratedValue(generator = "uuid")
