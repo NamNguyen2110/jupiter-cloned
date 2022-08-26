@@ -22,6 +22,8 @@ public class SwaggerDocumentationConfiguration {
 
     private final Environment env;
 
+    private final static String basePackage = "com.jupiter.oppsservice.web.api";
+
        ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Opps Service API ")
@@ -34,11 +36,11 @@ public class SwaggerDocumentationConfiguration {
     @Bean
     public Docket configureControllerPackageAndConvertors() {
         return new Docket(DocumentationType.SWAGGER_2)
-//                .host(env.getProperty("swagger.baseUrl"))
+                .host(env.getProperty("swagger.baseUrl"))
                 .securityContexts(Arrays.asList(securityContext()))
                 .securitySchemes(Arrays.asList(apiKey()))
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.jupiter.oppsservice.controller")).build()
+                .apis(RequestHandlerSelectors.basePackage(basePackage)).build()
                 .apiInfo(apiInfo());
     }
 
