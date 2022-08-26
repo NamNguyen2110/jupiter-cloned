@@ -10,6 +10,7 @@ import com.jupiter.oppsservice.service.OppService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class OppController {
     private final MessageService messageService;
 
     @GetMapping()
-    public ResponseEntity<ApiResponse<Page<OppResponse>>> search(Pageable pageable) {
+    public ResponseEntity<ApiResponse<Page<OppResponse>>> search(@PageableDefault Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<Page<OppResponse>>builder()
                 .errorCode(DataUtils.safeToString(HttpStatus.OK.value()))
                 .messages(Arrays.asList(messageService.getMessage("error.code.success")))

@@ -1,5 +1,6 @@
 package com.jupiter.oppsservice.domain.entity;
 
+import com.jupiter.common.base.AbstractEntity;
 import com.jupiter.oppsservice.domain.converter.ActivityTypeEnumConverter;
 import com.jupiter.oppsservice.domain.converter.ProjectTypeEnumConverter;
 import com.jupiter.oppsservice.domain.converter.OppStatusEnumConverter;
@@ -18,7 +19,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "opp")
-public class Opp {
+public class Opp extends AbstractEntity {
     @Id
     @Column(name = "id", unique = true, nullable = false, length = 36)
     @GeneratedValue(generator = "uuid")
