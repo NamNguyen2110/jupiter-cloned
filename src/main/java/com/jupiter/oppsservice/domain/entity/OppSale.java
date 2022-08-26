@@ -1,6 +1,5 @@
 package com.jupiter.oppsservice.domain.entity;
 
-import com.jupiter.common.base.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
