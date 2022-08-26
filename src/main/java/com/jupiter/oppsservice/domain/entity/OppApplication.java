@@ -1,6 +1,5 @@
 package com.jupiter.oppsservice.domain.entity;
 
-import com.jupiter.common.base.AbstractEntity;
 import com.jupiter.oppsservice.domain.converter.ApplicationTypeEnumConverter;
 import com.jupiter.oppsservice.domain.converter.OppApplicationStatusEnumConverter;
 import com.jupiter.oppsservice.domain.enums.ApplicationStatus;
