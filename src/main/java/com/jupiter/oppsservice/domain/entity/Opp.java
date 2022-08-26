@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "opp")
-public class Opportunity {
+public class Opp {
     @Id
     @Column(name = "id", unique = true, nullable = false, length = 36)
     @GeneratedValue(generator = "uuid")
@@ -37,6 +37,15 @@ public class Opportunity {
     @Column(name = "sale_pic_id")
     private String salePicId;
 
+    @OneToMany(mappedBy = "opp")
+    private List<OppRequirement> oppRequirements = new ArrayList<>();
+
+    @OneToMany(mappedBy = "opp")
+    private List<OppSale> oppSales = new ArrayList<>();
+
+    @OneToMany(mappedBy = "opp")
+    private List<OppApplication> oppApplications = new ArrayList<>();
+
     @Convert(converter = ProjectTypeEnumConverter.class)
     @Column(name = "project_type")
     private ProjectType projectType;
@@ -47,14 +56,4 @@ public class Opportunity {
 
     @Convert(converter = OppStatusEnumConverter.class)
     private OppStatus status;
-
-
-    @OneToMany(mappedBy = "opportunity")
-    private List<OpportunityRequirement> oppRequirements = new ArrayList<>();
-
-    @OneToMany(mappedBy = "opportunity")
-    private List<OpportunitySale> oppSales = new ArrayList<>();
-
-    @OneToMany(mappedBy = "opportunity")
-    private List<OpportunityApplication> oppApplications = new ArrayList<>();
 }

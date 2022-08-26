@@ -3,14 +3,13 @@ package com.jupiter.oppsservice.domain.entity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "opp_sale")
-public class OpportunitySale {
+@Table(name = "opp_employee_suggestion")
+public class OppEmployeeSuggestion {
     @Id
     @Column(name = "id", unique = true, nullable = false, length = 36)
     @GeneratedValue(generator = "uuid")
@@ -21,6 +20,6 @@ public class OpportunitySale {
     private String employeeId;
 
     @ManyToOne
-    @JoinColumn(name = "opp_id", referencedColumnName = "id")
-    private Opportunity opportunity;
+    @JoinColumn(name = "opp_requirement_id", referencedColumnName = "id")
+    private OppRequirement oppRequirement;
 }

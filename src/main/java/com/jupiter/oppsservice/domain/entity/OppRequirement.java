@@ -1,7 +1,5 @@
 package com.jupiter.oppsservice.domain.entity;
 
-import com.jupiter.oppsservice.domain.converter.LevelEnumConverter;
-import com.jupiter.oppsservice.domain.enums.Level;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -14,7 +12,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "opp_requirement")
-public class OpportunityRequirement {
+public class OppRequirement {
     @Id
     @Column(name = "id", unique = true, nullable = false, length = 36)
     @GeneratedValue(generator = "uuid")
@@ -36,13 +34,14 @@ public class OpportunityRequirement {
     @Column(name = "note")
     private String note;
 
-    @Convert(converter = LevelEnumConverter.class)
-    private Level level;
+    @Column(name = "level")
+    private String level;
 
     @ManyToOne
     @JoinColumn(name = "opp_id", referencedColumnName = "id")
-    private Opportunity opportunity;
+    private Opp opp;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "oppRequirement", cascade = CascadeType.ALL)
-    private List<OpportunityEmpSuggestion> opportunityEmpSuggestions = new ArrayList<>();
+    private List<OppEmployeeSuggestion> oppEmployeeSuggestions = new ArrayList<>();
+
 }

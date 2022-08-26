@@ -9,24 +9,21 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public enum ActivityType {
-    FEMALE("1"),
-    OTHER("2"),
-    MALE("3"),
-    HIDDEN("4");
+    OPP("OPP"),
+    PROJECT("PROJECT");
 
-    private String value;
+    private final String value;
 
-    private static final Map<String, ActivityType> objMap  = new HashMap<>();
+    private static final Map<String, ActivityType> genderMap  = new HashMap<>();
 
 
     static {
-        for (ActivityType obj : ActivityType.values()){
-            objMap.put(obj.value, obj);
+        for (ActivityType gender: ActivityType.values()){
+            genderMap.put(gender.value, gender);
         }
     }
 
-    public static ActivityType of(String s){
-        return objMap.get(s);
+    public static ActivityType of(String i){
+        return genderMap.get(i);
     }
-
 }

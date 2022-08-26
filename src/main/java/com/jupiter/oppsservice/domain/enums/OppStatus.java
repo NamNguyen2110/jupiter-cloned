@@ -9,25 +9,24 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public enum OppStatus {
-    FEMALE("1"),
-    OTHER("2"),
-    MALE("3"),
-    HIDDEN("4");
+    PLAY("PLAY"),
+    WON("WON"),
+    LOST("LOST"),
+    PROCESSING("PROCESSING"),
+    FINISH("FINISH");
 
+    private final String value;
 
-    private String value;
-
-    private static final Map<String, OppStatus> objMap  = new HashMap<>();
+    private static final Map<String, OppStatus> genderMap  = new HashMap<>();
 
 
     static {
-        for (OppStatus obj : OppStatus.values()){
-            objMap.put(obj.value, obj);
+        for (OppStatus gender: OppStatus.values()){
+            genderMap.put(gender.value, gender);
         }
     }
 
-    public static OppStatus of(String s){
-        return objMap.get(s);
+    public static OppStatus of(String i){
+        return genderMap.get(i);
     }
-
 }
