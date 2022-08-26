@@ -1,7 +1,6 @@
 package com.jupiter.oppsservice.domain.converter;
 
 import com.jupiter.oppsservice.domain.enums.ActivityType;
-import com.jupiter.oppsservice.domain.enums.ProjectType;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

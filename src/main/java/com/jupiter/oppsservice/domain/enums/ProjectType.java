@@ -9,25 +9,21 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public enum ProjectType {
-    FEMALE("1"),
-    OTHER("2"),
-    MALE("3"),
-    HIDDEN("4");
+    GDC("GDC"),
+    FIXED_PRICE("FIXED_PRICE");
 
+    private final String value;
 
-    private String value;
-
-    private static final Map<String, ProjectType> objMap  = new HashMap<>();
+    private static final Map<String, ProjectType> genderMap  = new HashMap<>();
 
 
     static {
-        for (ProjectType obj : ProjectType.values()){
-            objMap.put(obj.value, obj);
+        for (ProjectType gender: ProjectType.values()){
+            genderMap.put(gender.value, gender);
         }
     }
 
-    public static ProjectType of(String s){
-        return objMap.get(s);
+    public static ProjectType of(String i){
+        return genderMap.get(i);
     }
-
 }

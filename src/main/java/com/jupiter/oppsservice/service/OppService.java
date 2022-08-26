@@ -1,7 +1,10 @@
 package com.jupiter.oppsservice.service;
-import com.jupiter.oppsservice.domain.dto.OppDto;
-import java.util.List;
+
+import com.jupiter.oppsservice.domain.dto.response.OppResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface OppService {
-    List<OppDto> get();
+
+    Page<OppResponse> search(Pageable pageable);
 }
