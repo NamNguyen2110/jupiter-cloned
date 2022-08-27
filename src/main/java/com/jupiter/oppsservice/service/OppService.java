@@ -10,4 +10,6 @@ public interface OppService {
     Page<OppResponse> search(Pageable pageable);
 
     void create(OppRequest request);
+
+    OppResponse getOppById(String id);
 }

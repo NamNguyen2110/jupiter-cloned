@@ -1,5 +1,6 @@
 package com.jupiter.oppsservice.service.impl;
 
+import com.jupiter.common.exception.BusinessException;
 import com.jupiter.common.security.SecurityContext;
 import com.jupiter.common.service.MessageService;
 import com.jupiter.oppsservice.domain.dto.request.OppRequest;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -69,5 +71,15 @@ public class OppServiceImpl implements OppService {
     }
 
     private void validate(OppRequest request) {
+    }
+
+    @Override
+    public OppResponse getOppById(String id) {
+        Optional<Opp> opp = oppRepo.findById(id);
+        if (!opp.isPresent()){
+            throw new BusinessException(messageService.getMessage("error.code.fail"));
+        }else{
+            return oppMapper.toDto(opp.get());
+        }
     }
 }

@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -66,5 +67,13 @@ public class OppController {
                 .build());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ApiResponse<OppResponse>> getOppById(@PathVariable String id) {
+        return ResponseEntity.ok(new ApiResponse<>(
+                DataUtils.safeToString(HttpStatus.OK.value()),
+                Collections.singletonList(messageService.getMessage("error.code.success")),
+                oppService.getOppById(id),
+                LocalDateTime.now()));
+    }
 
 }
