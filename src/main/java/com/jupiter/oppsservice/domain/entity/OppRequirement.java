@@ -25,17 +25,23 @@ public class OppRequirement extends AbstractEntity {
     @Column(name = "position")
     private String position;
 
+    @Column(name = "level")
+    private String level;
+
     @Column(name = "exp")
     private Double exp;
 
-    @Column(name = "skill_stack")
-    private String skillStack;
+    @Column(name = "skill")
+    private String skill;
 
-    @Column(name = "note")
-    private String note;
+    @Column(name = "language")
+    private String language;
 
-    @Column(name = "level")
-    private String level;
+    @Column(name = "notes")
+    private String notes;
+
+    @Column(name = "attach_file_url")
+    private String attachFileUrl;
 
     @ManyToOne
     @JoinColumn(name = "opp_id", referencedColumnName = "id")

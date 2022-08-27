@@ -3,6 +3,7 @@ package com.jupiter.oppsservice.web.api;
 import com.jupiter.common.base.ApiResponse;
 import com.jupiter.common.security.SecurityContext;
 import com.jupiter.common.service.MessageService;
+import com.jupiter.common.service.S3StorageService;
 import com.jupiter.common.utils.DataUtils;
 import com.jupiter.oppsservice.domain.dto.request.OppRequest;
 import com.jupiter.oppsservice.domain.dto.response.OppResponse;
@@ -14,9 +15,12 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/opps")
@@ -29,6 +33,8 @@ public class OppController {
 
     private final MessageService messageService;
 
+    private final S3StorageService s3StorageService;
+
     @GetMapping()
     public ResponseEntity<ApiResponse<Page<OppResponse>>> search(@PageableDefault Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<Page<OppResponse>>builder()
@@ -40,7 +46,7 @@ public class OppController {
     }
 
     @PostMapping()
-    public ResponseEntity<ApiResponse<Object>> create(@RequestBody OppRequest request) {
+    public ResponseEntity<ApiResponse<Object>> create(@RequestBody @Valid OppRequest request) {
         oppService.create(request);
         return ResponseEntity.ok(ApiResponse.builder()
                 .errorCode(DataUtils.safeToString(HttpStatus.OK.value()))
@@ -49,4 +55,16 @@ public class OppController {
                 .timestamp(LocalDateTime.now())
                 .build());
     }
+
+    @PostMapping("/uploadFile")
+    public ResponseEntity<ApiResponse<Object>> uploadFile(@RequestPart(value = "files") List<MultipartFile> files) {
+        return ResponseEntity.ok(ApiResponse.builder()
+                .errorCode(DataUtils.safeToString(HttpStatus.OK.value()))
+                .messages(Arrays.asList(messageService.getMessage("error.code.success")))
+                .data(s3StorageService.uploadFile(files))
+                .timestamp(LocalDateTime.now())
+                .build());
+    }
+
+
 }
