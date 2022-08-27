@@ -69,6 +69,5 @@ public class OppServiceImpl implements OppService {
     }
 
     private void validate(OppRequest request) {
-
     }
 }

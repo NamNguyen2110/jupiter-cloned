@@ -9,11 +9,11 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public enum OppStatus {
-    PLAY("PLAY"),
+    NEW("NEW"),
+    PLAYING("PLAYING"),
+    DEACTIVATED("DEACTIVATED"),
     WON("WON"),
-    LOST("LOST"),
-    PROCESSING("PROCESSING"),
-    FINISH("FINISH");
+    LOST("LOST");
 
     private final String value;
 

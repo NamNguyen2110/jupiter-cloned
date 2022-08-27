@@ -8,22 +8,22 @@ import java.util.Map;
 
 @Getter
 @AllArgsConstructor
-public enum ActivityType {
-    OPP("OPP"),
-    PROJECT("PROJECT");
+public enum OppType {
+    GDC("GDC"),
+    FP("FP");
 
     private final String value;
 
-    private static final Map<String, ActivityType> genderMap  = new HashMap<>();
+    private static final Map<String, OppType> genderMap  = new HashMap<>();
 
 
     static {
-        for (ActivityType gender: ActivityType.values()){
+        for (OppType gender: OppType.values()){
             genderMap.put(gender.value, gender);
         }
     }
 
-    public static ActivityType of(String i){
+    public static OppType of(String i){
         return genderMap.get(i);
     }
 }

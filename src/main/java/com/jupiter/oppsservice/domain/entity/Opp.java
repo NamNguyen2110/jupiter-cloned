@@ -1,11 +1,9 @@
 package com.jupiter.oppsservice.domain.entity;
 
-import com.jupiter.oppsservice.domain.converter.ActivityTypeEnumConverter;
-import com.jupiter.oppsservice.domain.converter.ProjectTypeEnumConverter;
+import com.jupiter.oppsservice.domain.converter.OppTypeEnumConverter;
 import com.jupiter.oppsservice.domain.converter.OppStatusEnumConverter;
-import com.jupiter.oppsservice.domain.enums.ActivityType;
 import com.jupiter.oppsservice.domain.enums.OppStatus;
-import com.jupiter.oppsservice.domain.enums.ProjectType;
+import com.jupiter.oppsservice.domain.enums.OppType;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -25,35 +23,31 @@ public class Opp extends AbstractEntity {
     @GenericGenerator(name = "uuid", strategy = "uuid")
     private String id;
 
-    @Column(name = "project_code")
-    private String projectCode;
+    @Convert(converter = OppTypeEnumConverter.class)
+    @Column(name = "opp_type")
+    private OppType oppType;
+
+    @Column(name = "opp_name")
+    private String oppName;
 
     @Column(name = "customer_name")
     private String customerName;
 
+    @Column(name = "sales_pic")
+    private String salesPic;
+
     @Column(name = "du_pic")
     private String duPic;
 
-    @Column(name = "sale_pic_id")
-    private String salePicId;
+    @Column(name = "lead_pic")
+    private String leadPic;
+
+    @Convert(converter = OppStatusEnumConverter.class)
+    private OppStatus status;
 
     @OneToMany(mappedBy = "opp")
     private List<OppRequirement> oppRequirements = new ArrayList<>();
 
     @OneToMany(mappedBy = "opp")
-    private List<OppSale> oppSales = new ArrayList<>();
-
-    @OneToMany(mappedBy = "opp")
     private List<OppApplication> oppApplications = new ArrayList<>();
-
-    @Convert(converter = ProjectTypeEnumConverter.class)
-    @Column(name = "project_type")
-    private ProjectType projectType;
-
-    @Convert(converter = ActivityTypeEnumConverter.class)
-    @Column(name = "activity_type")
-    private ActivityType activityType;
-
-    @Convert(converter = OppStatusEnumConverter.class)
-    private OppStatus status;
 }

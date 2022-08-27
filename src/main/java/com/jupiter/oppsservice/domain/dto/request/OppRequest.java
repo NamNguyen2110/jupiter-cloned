@@ -1,14 +1,16 @@
 package com.jupiter.oppsservice.domain.dto.request;
 
-import com.jupiter.oppsservice.domain.enums.ActivityType;
-import com.jupiter.oppsservice.domain.enums.OppStatus;
-import com.jupiter.oppsservice.domain.enums.ProjectType;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,23 +20,36 @@ import java.util.List;
 @NoArgsConstructor
 public class OppRequest implements Serializable {
 
+    @NotNull()
+    @Pattern(regexp = "GDC|FP")
+    private String oppType;
+
     @ApiModelProperty(example = "default")
-    private String projectCode;
+    @NotBlank()
+    private String oppName;
+
     @ApiModelProperty(example = "default")
+    @NotBlank()
     private String customerName;
+
+    @NotBlank()
+    private String salesPic;
+
     @ApiModelProperty(example = "default")
+    @NotBlank()
     private String duPic;
 
-    private ActivityType activityType;
+    private String leadPic;
 
-    private ProjectType projectType;
+    @Pattern(regexp = "NEW")
+    private String status;
 
-    private OppStatus status;
+    @NotNull
+    @NotEmpty()
+    private List<@Valid OppRequirementRequest> oppRequirements;
 
-//
-//    private List<OppApplicationDto> oppApplications;
-//
-    private List<OppRequirementRequest> oppRequirements;
-//
-//    private List<OppSaleDto> oppSales;
+    //
+    //    private List<OppApplicationDto> oppApplications;
+
+
 }
