@@ -23,27 +23,25 @@ public class Opp extends AbstractEntity {
     @GenericGenerator(name = "uuid", strategy = "uuid")
     private String id;
 
-    @Convert(converter = OppTypeEnumConverter.class)
-    @Column(name = "opp_type")
-    private OppType oppType;
-
     @Column(name = "opp_name")
     private String oppName;
 
     @Column(name = "customer_name")
     private String customerName;
 
-    @Column(name = "sales_pic")
+    @Column(name = "sale_pic_id")
     private String salesPic;
 
     @Column(name = "du_pic")
     private String duPic;
 
-    @Column(name = "lead_pic")
-    private String leadPic;
-
     @Convert(converter = OppStatusEnumConverter.class)
+    @Column(name = "status")
     private OppStatus status;
+
+    @Convert(converter = OppTypeEnumConverter.class)
+    @Column(name = "opp_type")
+    private OppType oppType;
 
     @OneToMany(mappedBy = "opp")
     private List<OppPosition> oppPositions = new ArrayList<>();

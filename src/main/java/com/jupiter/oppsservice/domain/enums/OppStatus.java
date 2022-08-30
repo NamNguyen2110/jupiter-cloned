@@ -17,16 +17,16 @@ public enum OppStatus {
 
     private final String value;
 
-    private static final Map<String, OppStatus> genderMap  = new HashMap<>();
+    private static final Map<String, OppStatus> statusMap  = new HashMap<>();
 
 
     static {
-        for (OppStatus gender: OppStatus.values()){
-            genderMap.put(gender.value, gender);
+        for (OppStatus status: OppStatus.values()){
+            statusMap.put(status.value, status);
         }
     }
 
     public static OppStatus of(String i){
-        return genderMap.get(i);
+        return statusMap.get(i);
     }
 }

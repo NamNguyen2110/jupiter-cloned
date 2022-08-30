@@ -1,5 +1,6 @@
 package com.jupiter.oppsservice.service.impl;
 
+import com.jupiter.common.exception.BusinessException;
 import com.jupiter.common.security.SecurityContext;
 import com.jupiter.common.service.MessageService;
 import com.jupiter.oppsservice.domain.dto.request.OppRequest;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -66,6 +68,14 @@ public class OppServiceImpl implements OppService {
             oppPosition.setOpp(opp);
         }
         return oppPositions;
+    }
+
+    @Override
+    public void updateStatus(String oppId, Opp opp) {
+        Opp opp1 = oppRepo.findById(oppId).orElseThrow(
+                () -> new BusinessException(messageService.getMessage("error.code.opp.notFound")));
+        opp1.setStatus(opp.getStatus());
+        oppRepo.save(opp1);
     }
 
     private void validate(OppRequest request) {
