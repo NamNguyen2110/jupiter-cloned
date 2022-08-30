@@ -1,7 +1,7 @@
 package com.jupiter.oppsservice.domain.mapper;
 
-import com.jupiter.oppsservice.domain.dto.request.OppRequest;
-import com.jupiter.oppsservice.domain.dto.response.OppResponse;
+import com.jupiter.oppsservice.payload.request.OppRequest;
+import com.jupiter.oppsservice.payload.response.OppResponse;
 import com.jupiter.oppsservice.domain.entity.Opp;
 import org.mapstruct.Mapper;
 

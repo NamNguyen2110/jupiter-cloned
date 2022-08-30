@@ -1,4 +1,4 @@
-package com.jupiter.oppsservice.domain.dto.request;
+package com.jupiter.oppsservice.payload.request;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

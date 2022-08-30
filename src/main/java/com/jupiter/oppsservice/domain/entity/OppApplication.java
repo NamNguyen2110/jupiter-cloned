@@ -30,7 +30,7 @@ public class OppApplication extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "opp_requirement_id", referencedColumnName = "id")
-    private OppRequirement oppoRequirement;
+    private OppPosition oppoRequirement;
 
     @Convert(converter = OppApplicationStatusEnumConverter.class)
     @Column(name = "status")

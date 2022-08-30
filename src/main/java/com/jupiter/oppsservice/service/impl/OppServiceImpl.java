@@ -3,12 +3,15 @@ package com.jupiter.oppsservice.service.impl;
 import com.jupiter.common.exception.BusinessException;
 import com.jupiter.common.security.SecurityContext;
 import com.jupiter.common.service.MessageService;
-import com.jupiter.oppsservice.domain.dto.request.OppRequest;
-import com.jupiter.oppsservice.domain.dto.response.OppResponse;
+import com.jupiter.oppsservice.domain.entity.OppPosition;
+import com.jupiter.oppsservice.payload.request.OppProcessRequest;
+import com.jupiter.oppsservice.payload.request.OppRequest;
+import com.jupiter.oppsservice.payload.response.OppProcessResponse;
+import com.jupiter.oppsservice.payload.response.OppResponse;
 import com.jupiter.oppsservice.domain.entity.Opp;
-import com.jupiter.oppsservice.domain.entity.OppRequirement;
 import com.jupiter.oppsservice.domain.mapper.OppMapper;
 import com.jupiter.oppsservice.domain.mapper.OppRequirementMapper;
+import com.jupiter.oppsservice.repository.OppProcessRepository;
 import com.jupiter.oppsservice.repository.OppRepository;
 import com.jupiter.oppsservice.repository.OppRequirementRepository;
 import com.jupiter.oppsservice.service.OppService;
@@ -37,6 +40,8 @@ public class OppServiceImpl implements OppService {
 
     private final SecurityContext securityContext;
 
+    private final OppProcessRepository oppProcessRepository;
+
 
     @Override
     public Page<OppResponse> search(Pageable pageable) {
@@ -57,17 +62,17 @@ public class OppServiceImpl implements OppService {
         Opp opp = oppMapper.toEntity(request);
         oppRepo.save(opp);
 
-        List<OppRequirement> oppRequirements = getOppRequirements(request, opp);
-        oppRequirementRepo.saveAll(oppRequirements);
+        List<OppPosition> oppPositions = getOppRequirements(request, opp);
+        oppRequirementRepo.saveAll(oppPositions);
 
     }
 
-    private List<OppRequirement> getOppRequirements(OppRequest request, Opp opp) {
-        List<OppRequirement> oppRequirements = oppRequirementMapper.toEntityList(request.getOppRequirements());
-        for (OppRequirement oppRequirement : oppRequirements) {
-            oppRequirement.setOpp(opp);
+    private List<OppPosition> getOppRequirements(OppRequest request, Opp opp) {
+        List<OppPosition> oppPositions = oppRequirementMapper.toEntityList(request.getOppRequirements());
+        for (OppPosition oppPosition : oppPositions) {
+            oppPosition.setOpp(opp);
         }
-        return oppRequirements;
+        return oppPositions;
     }
 
     private void validate(OppRequest request) {
@@ -81,5 +86,10 @@ public class OppServiceImpl implements OppService {
         }else{
             return oppMapper.toDto(opp.get());
         }
+    }
+
+    @Override
+    public List<OppProcessResponse> getOppProcessResult(OppProcessRequest oppProcessRequest) {
+        return oppProcessRepository.getOppProcessResult(oppProcessRequest);
     }
 }

@@ -1,7 +1,7 @@
 package com.jupiter.oppsservice.repository;
 
-import com.jupiter.oppsservice.domain.entity.OppRequirement;
+import com.jupiter.oppsservice.domain.entity.OppPosition;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OppRequirementRepository extends JpaRepository<OppRequirement, String> {
+public interface OppRequirementRepository extends JpaRepository<OppPosition, String> {
 }

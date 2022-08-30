@@ -21,5 +21,5 @@ public class OppEmployeeSuggestion extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "opp_requirement_id", referencedColumnName = "id")
-    private OppRequirement oppRequirement;
+    private OppPosition oppPosition;
 }

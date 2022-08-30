@@ -9,9 +9,9 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public enum ApplicationType {
-    CV("CV"),
-    TEST("TEST"),
-    INTERVIEW("INTERVIEW");
+    CV("C"),
+    TEST("T"),
+    INTERVIEW("I");
 
     private String value;
 

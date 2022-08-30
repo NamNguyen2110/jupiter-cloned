@@ -1,11 +1,10 @@
-package com.jupiter.oppsservice.domain.dto.response;
+package com.jupiter.oppsservice.payload.response;
 
-import com.jupiter.oppsservice.domain.dto.request.OppRequest;
+import com.jupiter.oppsservice.payload.request.OppRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
