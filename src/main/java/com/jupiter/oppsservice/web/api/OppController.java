@@ -7,6 +7,7 @@ import com.jupiter.common.service.S3StorageService;
 import com.jupiter.common.utils.DataUtils;
 import com.jupiter.oppsservice.domain.dto.request.OppRequest;
 import com.jupiter.oppsservice.domain.dto.response.OppResponse;
+import com.jupiter.oppsservice.domain.entity.Opp;
 import com.jupiter.oppsservice.service.OppService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -64,6 +65,16 @@ public class OppController {
                 .data(s3StorageService.uploadFile(files))
                 .timestamp(LocalDateTime.now())
                 .build());
+    }
+
+    @PatchMapping("")
+    public ResponseEntity<ApiResponse<Object>> update(@RequestParam String id, @RequestBody Opp opp) {
+        oppService.updateStatus(id, opp);
+        return ResponseEntity.ok(ApiResponse.builder()
+                .errorCode(DataUtils.safeToString(HttpStatus.OK.value()))
+                .messages(Arrays.asList(messageService.getMessage("error.code.success")))
+                .data(null)
+                .timestamp(LocalDateTime.now()).build());
     }
 
 
