@@ -11,8 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "opp_requirement")
-public class OppRequirement extends AbstractEntity {
+@Table(name = "opp_position")
+public class OppPosition extends AbstractEntity {
     @Id
     @Column(name = "id", unique = true, nullable = false, length = 36)
     @GeneratedValue(generator = "uuid")
@@ -47,7 +47,7 @@ public class OppRequirement extends AbstractEntity {
     @JoinColumn(name = "opp_id", referencedColumnName = "id")
     private Opp opp;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "oppRequirement", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "oppPosition", cascade = CascadeType.ALL)
     private List<OppEmployeeSuggestion> oppEmployeeSuggestions = new ArrayList<>();
 
 }

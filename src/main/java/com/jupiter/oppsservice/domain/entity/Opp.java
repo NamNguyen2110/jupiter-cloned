@@ -46,7 +46,7 @@ public class Opp extends AbstractEntity {
     private OppStatus status;
 
     @OneToMany(mappedBy = "opp")
-    private List<OppRequirement> oppRequirements = new ArrayList<>();
+    private List<OppPosition> oppPositions = new ArrayList<>();
 
     @OneToMany(mappedBy = "opp")
     private List<OppApplication> oppApplications = new ArrayList<>();

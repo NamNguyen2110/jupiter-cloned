@@ -5,11 +5,11 @@ import com.jupiter.common.service.MessageService;
 import com.jupiter.oppsservice.domain.dto.request.OppRequest;
 import com.jupiter.oppsservice.domain.dto.response.OppResponse;
 import com.jupiter.oppsservice.domain.entity.Opp;
-import com.jupiter.oppsservice.domain.entity.OppRequirement;
+import com.jupiter.oppsservice.domain.entity.OppPosition;
 import com.jupiter.oppsservice.domain.mapper.OppMapper;
 import com.jupiter.oppsservice.domain.mapper.OppRequirementMapper;
 import com.jupiter.oppsservice.repository.OppRepository;
-import com.jupiter.oppsservice.repository.OppRequirementRepository;
+import com.jupiter.oppsservice.repository.OppPositionRepository;
 import com.jupiter.oppsservice.service.OppService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,7 +25,7 @@ public class OppServiceImpl implements OppService {
 
     private final OppRepository oppRepo;
 
-    private final OppRequirementRepository oppRequirementRepo;
+    private final OppPositionRepository oppRequirementRepo;
 
     private final MessageService messageService;
 
@@ -55,17 +55,17 @@ public class OppServiceImpl implements OppService {
         Opp opp = oppMapper.toEntity(request);
         oppRepo.save(opp);
 
-        List<OppRequirement> oppRequirements = getOppRequirements(request, opp);
-        oppRequirementRepo.saveAll(oppRequirements);
+        List<OppPosition> oppPositions = getOppRequirements(request, opp);
+        oppRequirementRepo.saveAll(oppPositions);
 
     }
 
-    private List<OppRequirement> getOppRequirements(OppRequest request, Opp opp) {
-        List<OppRequirement> oppRequirements = oppRequirementMapper.toEntityList(request.getOppRequirements());
-        for (OppRequirement oppRequirement : oppRequirements) {
-            oppRequirement.setOpp(opp);
+    private List<OppPosition> getOppRequirements(OppRequest request, Opp opp) {
+        List<OppPosition> oppPositions = oppRequirementMapper.toEntityList(request.getOppRequirements());
+        for (OppPosition oppPosition : oppPositions) {
+            oppPosition.setOpp(opp);
         }
-        return oppRequirements;
+        return oppPositions;
     }
 
     private void validate(OppRequest request) {
