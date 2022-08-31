@@ -20,6 +20,8 @@ import java.util.List;
 @NoArgsConstructor
 public class OppRequest implements Serializable {
 
+    private String id;
+
     @NotNull()
     @Pattern(regexp = "GDC|FP")
     private String oppType;
@@ -41,12 +43,9 @@ public class OppRequest implements Serializable {
 
     private String leadPic;
 
-    @Pattern(regexp = "NEW")
-    private String status;
-
     @NotNull
     @NotEmpty()
-    private List<@Valid OppRequirementRequest> oppRequirements;
+    private List<@Valid OppPositionRequest> oppRequirements;
 
     //
     //    private List<OppApplicationDto> oppApplications;

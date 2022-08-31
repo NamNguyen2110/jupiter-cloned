@@ -15,7 +15,10 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OppRequirementRequest implements Serializable {
+public class OppPositionRequest implements Serializable {
+
+    private String id;
+
     @NotNull()
     @Min(value = 1)
     private Integer quantity;
