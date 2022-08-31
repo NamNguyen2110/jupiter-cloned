@@ -3,7 +3,9 @@ package com.jupiter.oppsservice.service.impl;
 import com.jupiter.common.exception.BusinessException;
 import com.jupiter.common.security.SecurityContext;
 import com.jupiter.common.service.MessageService;
+import com.jupiter.oppsservice.domain.dto.request.OppProcessRequest;
 import com.jupiter.oppsservice.domain.dto.request.OppRequest;
+import com.jupiter.oppsservice.domain.dto.response.OppProcessResponse;
 import com.jupiter.oppsservice.domain.dto.response.OppResponse;
 import com.jupiter.oppsservice.domain.entity.Opp;
 import com.jupiter.oppsservice.domain.entity.OppPosition;
@@ -12,6 +14,7 @@ import com.jupiter.oppsservice.domain.enums.OppType;
 import com.jupiter.oppsservice.domain.mapper.OppMapper;
 import com.jupiter.oppsservice.domain.mapper.OppPositionMapper;
 import com.jupiter.oppsservice.repository.OppPositionRepository;
+import com.jupiter.oppsservice.repository.OppProcessRepository;
 import com.jupiter.oppsservice.repository.OppRepository;
 import com.jupiter.oppsservice.service.OppService;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +41,7 @@ public class OppServiceImpl implements OppService {
 
     private final SecurityContext securityContext;
 
-
+    private final OppProcessRepository oppProcessRepository;
     @Override
     public Page<OppResponse> search(Pageable pageable) {
         return oppRepo.findAll(pageable).map(oppMapper::toDto);
@@ -102,5 +105,10 @@ public class OppServiceImpl implements OppService {
     }
 
     private void validate(OppRequest request) {
+    }
+
+    @Override
+    public List<OppProcessResponse> getOppProcessResult(OppProcessRequest oppProcessRequest) {
+        return oppProcessRepository.getOppProcessResult(oppProcessRequest);
     }
 }
