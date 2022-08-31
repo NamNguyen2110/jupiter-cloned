@@ -57,6 +57,17 @@ public class OppController {
                 .build());
     }
 
+    @PutMapping()
+    public ResponseEntity<ApiResponse<Object>> update(@RequestBody @Valid OppRequest request) {
+        oppService.update(request);
+        return ResponseEntity.ok(ApiResponse.builder()
+                .errorCode(DataUtils.safeToString(HttpStatus.OK.value()))
+                .messages(Arrays.asList(messageService.getMessage("error.code.success")))
+                .data(null)
+                .timestamp(LocalDateTime.now())
+                .build());
+    }
+
     @PostMapping("/uploadFile")
     public ResponseEntity<ApiResponse<Object>> uploadFile(@RequestPart(value = "files") List<MultipartFile> files) {
         return ResponseEntity.ok(ApiResponse.builder()

@@ -47,7 +47,7 @@ public class OppPosition extends AbstractEntity {
     @JoinColumn(name = "opp_id", referencedColumnName = "id")
     private Opp opp;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "oppPosition", cascade = CascadeType.ALL)
-    private List<OppEmployeeSuggestion> oppEmployeeSuggestions = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "oppPosition", cascade = CascadeType.ALL)
+//    private List<OppEmployeeSuggestion> oppEmployeeSuggestions = new ArrayList<>();
 
 }

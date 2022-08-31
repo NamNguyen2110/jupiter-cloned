@@ -43,9 +43,17 @@ public class Opp extends AbstractEntity {
     @Column(name = "opp_type")
     private OppType oppType;
 
-    @OneToMany(mappedBy = "opp")
+    @Column(name = "lead_pic_id")
+    private String leadPic;
+
+    @OneToMany(mappedBy = "opp", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OppPosition> oppPositions = new ArrayList<>();
 
-    @OneToMany(mappedBy = "opp")
-    private List<OppApplication> oppApplications = new ArrayList<>();
+//    @OneToMany(mappedBy = "opp")
+//    private List<OppApplication> oppApplications = new ArrayList<>();
+
+    public void updateOppPositions(List<OppPosition> oppRequirements) {
+        this.oppPositions.clear();
+        this.oppPositions.addAll(oppRequirements);
+    }
 }

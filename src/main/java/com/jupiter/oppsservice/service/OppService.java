@@ -8,11 +8,11 @@ import org.springframework.data.domain.Pageable;
 
 public interface OppService {
 
-
-
     Page<OppResponse> search(Pageable pageable);
 
     void create(OppRequest request);
+
+    void update(OppRequest request);
 
     void updateStatus(String id, Opp opp);
 }
