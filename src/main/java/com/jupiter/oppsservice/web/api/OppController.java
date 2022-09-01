@@ -5,6 +5,7 @@ import com.jupiter.common.security.SecurityContext;
 import com.jupiter.common.service.MessageService;
 import com.jupiter.common.service.S3StorageService;
 import com.jupiter.common.utils.DataUtils;
+import com.jupiter.oppsservice.domain.dto.request.OppProcessRequest;
 import com.jupiter.oppsservice.domain.dto.request.OppRequest;
 import com.jupiter.oppsservice.domain.dto.response.OppResponse;
 import com.jupiter.oppsservice.domain.entity.Opp;
@@ -88,5 +89,10 @@ public class OppController {
                 .timestamp(LocalDateTime.now()).build());
     }
 
+    @PostMapping("/process")
+
+    public ResponseEntity<?> getProcess(@RequestBody @Valid OppProcessRequest oppProcessRequest) {
+        return ResponseEntity.ok(oppService.getOppProcessResult(oppProcessRequest));
+    }
 
 }
